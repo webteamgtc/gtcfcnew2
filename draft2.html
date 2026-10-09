@@ -18,7 +18,7 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
   --wipe: cubic-bezier(.76, 0, .24, 1);
   --type-hero: clamp(50px, 7.5vw, 100px);
-  --type-hero-lh: 1.12;
+  --type-hero-lh: 1.32;
   --type-subhead: clamp(30px, 3.8vw, 40px);
   --type-display: clamp(64px, 8vw, 84px);
 }
@@ -138,6 +138,8 @@ p { margin: 0; }
 .kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--bronze-ink); }
 .kicker::before { content: ""; width: 28px; height: 1px; background: var(--bronze); }
 .h1 { margin-top: 22px; font-weight: 600; line-height: var(--type-hero-lh); font-size: var(--type-hero); }
+.hero .h1 { line-height: 1.38; }
+.hero .h1 .rise { padding-bottom: 0.12em; }
 .h1 em { font-style: normal; color: var(--blue-ink); }
 .lead { margin-top: 26px; max-width: 32em; font-size: 18px; color: var(--muted); }
 .actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }

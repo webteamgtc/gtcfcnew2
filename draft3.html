@@ -18,7 +18,7 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
   --wipe: cubic-bezier(.76, 0, .24, 1);
   --type-hero: clamp(50px, 7.5vw, 100px);
-  --type-hero-lh: 1.12;
+  --type-hero-lh: 1.32;
   --type-subhead: clamp(30px, 3.8vw, 40px);
   --type-display: clamp(64px, 8vw, 84px);
 }
@@ -145,6 +145,9 @@ p { margin: 0; }
 .chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--bronze); animation: blink 1.8s ease-in-out infinite; }
 @keyframes blink { 50% { opacity: .25; } }
 .h1 { margin-top: 18px; font-weight: 700; line-height: var(--type-hero-lh); font-size: var(--type-hero); letter-spacing: -0.04em; }
+.hero .h1 { line-height: 1.42; }
+.hero .h1 .rise { padding-bottom: 0.14em; }
+.hero .h1 br { display: block; margin-top: 0.18em; }
 .grad { background: linear-gradient(100deg, var(--blue-ink) 0%, var(--bronze) 85%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lead { margin: 20px auto 0; max-width: 34em; font-size: 18px; color: var(--muted); }
 .actions { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
