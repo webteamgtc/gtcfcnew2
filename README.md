@@ -1,21 +1,19 @@
-# GTCFC.com — static design previews
+# GTCFC.com — static design drafts
 
-Three self-contained HTML concepts for **GTC Financial Consultancy LLC** (same pages and teaser content, different layout and motion).
+Three self-contained HTML concepts for **GTC Financial Consultancy LLC**.
 
-| File | Concept |
-|------|---------|
-| [atlas.html](./atlas.html) | Atlas |
-| [meridian.html](./meridian.html) | Meridian |
-| [prism.html](./prism.html) | Prism |
+| File | Opens by default |
+|------|------------------|
+| [draft1.html](./draft1.html) | Full website home |
+| [draft2.html](./draft2.html) | Full website home |
+| [draft3.html](./draft3.html) | Full website home |
+
+Coming Soon only: append `#coming-soon` (e.g. `draft1.html#coming-soon`).
 
 ## Review locally
 
-Open [index.html](./index.html) in a browser, or run any static server from this folder.
-
-Inside each concept, use the **Preview** bar: **Coming Soon** vs **Full website**.
+Open [index.html](./index.html) or any `draftN.html` directly in a browser.
 
 ## Deploy (Vercel)
 
-Connect this repo as a **static** project (no build command). Root `index.html` lists the three concepts.
-
-No environment variables required for these files.
+Static site, no build command. Share links like `https://your-domain.vercel.app/draft1.html`.

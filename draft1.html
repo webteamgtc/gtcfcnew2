@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GTCFC Atlas</title>
+<title>GTCFC Draft 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
@@ -417,7 +417,7 @@ const modeSwitch = (cls = "") => `<div class="modes ${cls}" role="group" aria-la
 function startApp(D) {
   const app = document.getElementById("app");
   const ROUTES = ["coming-soon", "home", "about", "regulation", "markets", "support", "open-account", "login"];
-  const route = () => { const h = location.hash.replace("#", ""); return ROUTES.includes(h) ? h : "coming-soon"; };
+  const route = () => { const h = location.hash.replace("#", ""); return ROUTES.includes(h) ? h : "home"; };
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let pendingSec = null, first = true, busy = false, rendered = null;
 
@@ -655,7 +655,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     return host;
   });
 
-  startApp({ title: "GTCFC Atlas", comingSoon, home, page, account, menu, scene, leave, enter, menuCloseMs: 430 });
+  startApp({ title: "GTCFC Draft 1", comingSoon, home, page, account, menu, scene, leave, enter, menuCloseMs: 430 });
 })();
 </script>
 
