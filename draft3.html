@@ -79,12 +79,6 @@ p { margin: 0; }
 .modes.compact span { display: none; }
 
 /* preview bar */
-.pbar { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); transform: translateX(-50%); z-index: 90; display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line-2); box-shadow: var(--shadow); font-size: 12px; max-width: calc(100vw - 32px); }
-.pbar span { padding: 7px 10px 7px 12px; color: var(--faint); white-space: nowrap; }
-.pbar a { padding: 7px 14px; border-radius: 999px; color: var(--muted); white-space: nowrap; }
-.pbar a.on { background: var(--blue); color: #fff; font-weight: 600; }
-@media (max-width: 420px) { .pbar span { display: none; } }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -263,12 +257,6 @@ p { margin: 0; }
 
 <div class="mesh" aria-hidden="true"><i></i><i></i></div>
 <div id="app"></div>
-<nav class="pbar" aria-label="Preview">
-  <span>Preview</span>
-  <a href="#coming-soon" data-p="cs">Coming Soon</a>
-  <a href="#home" data-p="site">Full website</a>
-</nav>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (() => {
@@ -395,7 +383,6 @@ function startApp(D) {
     const r = route(); rendered = r;
     app.innerHTML = r === "coming-soon" ? D.comingSoon() : r === "home" ? D.home() : PAGES[r] ? D.page(r) : D.account(r);
     scrollTo(0, 0);
-    document.querySelectorAll(".pbar a").forEach((a) => a.classList.toggle("on", (a.dataset.p === "cs") === (r === "coming-soon")));
     const t = r === "home" ? "Home" : r === "coming-soon" ? "" : (PAGES[r] || ACCOUNT[r]).kicker;
     document.title = t ? `${t} · ${D.title}` : D.title;
     if (D.scene) D.scene.mount(document.getElementById("sceneSlot"));
