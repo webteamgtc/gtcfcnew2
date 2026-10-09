@@ -17,10 +17,6 @@
   --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --wipe: cubic-bezier(.76, 0, .24, 1);
-  --type-hero: clamp(50px, 7.5vw, 100px);
-  --type-hero-lh: 1.32;
-  --type-subhead: clamp(30px, 3.8vw, 40px);
-  --type-display: clamp(64px, 8vw, 84px);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -137,9 +133,7 @@ p { margin: 0; }
 @media (min-width: 1024px) { .hero .wrap { grid-template-columns: 1.05fr 1fr; } }
 .kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--bronze-ink); }
 .kicker::before { content: ""; width: 28px; height: 1px; background: var(--bronze); }
-.h1 { margin-top: 22px; font-weight: 600; line-height: var(--type-hero-lh); font-size: var(--type-hero); }
-.hero .h1 { line-height: 1.38; }
-.hero .h1 .rise { padding-bottom: 0.12em; }
+.h1 { margin-top: 22px; font-weight: 600; line-height: 1.02; font-size: clamp(44px, 6.4vw, 86px); }
 .h1 em { font-style: normal; color: var(--blue-ink); }
 .lead { margin-top: 26px; max-width: 32em; font-size: 18px; color: var(--muted); }
 .actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
@@ -156,7 +150,7 @@ p { margin: 0; }
 .teaser { padding: 32px 0; border-bottom: 1px solid var(--line); }
 @media (min-width: 768px) { .teaser { padding: 44px 28px; border-bottom: 0; } .teaser + .teaser { border-left: 1px solid var(--line); } .teaser:first-child { padding-left: 0; } }
 .teaser small { font-size: 12px; font-weight: 600; letter-spacing: .2em; color: var(--bronze-ink); }
-.teaser h3 { margin-top: 14px; font-size: var(--type-subhead); line-height: 1.15; font-weight: 600; }
+.teaser h3 { margin-top: 14px; font-size: 22px; font-weight: 600; }
 .teaser p { margin-top: 8px; color: var(--muted); font-size: 15px; }
 
 /* section heads */
@@ -175,7 +169,7 @@ p { margin: 0; }
 .ncard::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--bronze); transform: scaleY(0); transform-origin: bottom; transition: transform .45s var(--ease); }
 .ncard:hover { transform: translateX(6px); }
 .ncard:hover::before { transform: scaleY(1); }
-.ncard h3 { font-size: var(--type-subhead); line-height: 1.15; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.ncard h3 { font-size: 21px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .ncard h3 svg { width: 18px; height: 18px; color: var(--bronze-ink); opacity: 0; transform: translateX(-8px); transition: all .35s var(--ease); }
 .ncard:hover h3 svg { opacity: 1; transform: none; }
 .ncard p { margin-top: 8px; font-size: 15px; color: var(--muted); }
