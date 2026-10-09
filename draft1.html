@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GTCFC Draft 1</title>
+<link rel="icon" href="https://www.gtcfx.com/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
@@ -96,9 +97,10 @@ p { margin: 0; }
 .up { text-transform: uppercase; }
 
 /* logo: rising bars */
-.logo { display: inline-flex; align-items: center; gap: 10px; }
-.logo svg { width: 34px; height: 34px; flex: none; }
-.logo b { font-family: var(--head); font-weight: 800; font-size: 20px; letter-spacing: .08em; }
+.logo { display: inline-flex; align-items: center; max-width: 100%; }
+.logo-img { display: block; height: 34px; width: auto; max-width: min(200px, 48vw); object-fit: contain; object-position: left center; }
+@media (min-width: 640px) { .logo-img { height: 40px; max-width: 240px; } }
+.logo-img--lg { height: 56px; max-width: 280px; }
 
 /* header */
 .hdr { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -398,6 +400,16 @@ const Theme = (() => {
     css: (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim(),
   };
 })();
+const LOGO_LIGHT = "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/logo-2024-new.webp";
+const LOGO_DARK = "https://gtcfx-bucket.s3.ap-southeast-1.amazonaws.com/img/footer-logo.webp";
+const logoForTheme = () => (Theme.get() === "light" ? LOGO_LIGHT : LOGO_DARK);
+const syncLogoImages = () => document.querySelectorAll(".logo-img:not([data-logo-fixed])").forEach((img) => { img.src = logoForTheme(); });
+Theme.on(syncLogoImages);
+const brandMark = (fixedDark = false) => {
+  const src = fixedDark ? LOGO_DARK : logoForTheme();
+  const fixed = fixedDark ? ' data-logo-fixed="1"' : "";
+  return `<img class="logo-img${fixedDark ? " logo-img--lg" : ""}" src="${src}" alt="${C.short}" width="260" height="64" decoding="async"${fixed}>`;
+};
 const modeSwitch = (cls = "") => `<div class="modes ${cls}" role="group" aria-label="Colour mode">${MODES.map(([k, l, ic]) =>
   `<button type="button" data-set-mode="${k}" aria-label="${l} mode" title="${l}">${ic}<span>${l}</span></button>`).join("")}</div>`;
 
@@ -507,10 +519,8 @@ addEventListener("pointermove", (e) => { pointer.x = (e.clientX / innerWidth) * 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 
-  // Atlas logo: rising bars inside a square
-  const mark = () => `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="1.5" y="1.5" width="37" height="37" fill="none" stroke="var(--text)" stroke-width="3"/>
-    <rect x="9" y="22" width="5.5" height="10" fill="var(--blue-ink)"/><rect x="17.25" y="15" width="5.5" height="17" fill="var(--blue-ink)"/><rect x="25.5" y="8" width="5.5" height="24" fill="var(--bronze)"/></svg>`;
-  const logo = (cls = "") => `<a href="#home" class="logo ${cls}" aria-label="${C.name}">${mark()}<b>GTCFC</b></a>`;
+  const mark = (fixedDark = false) => brandMark(fixedDark);
+  const logo = (cls = "") => `<a href="#home" class="logo ${cls}" aria-label="${C.name}">${mark()}</a>`;
   const lines = (arr, d = 0) => arr.map((l, i) => `<span class="line"><span class="${l[1] || ""}" style="animation-delay:${(d + i * 0.12).toFixed(2)}s">${l[0]}</span></span>`).join("");
 
   const header = (r) => `<header class="hdr" id="hdr"><div class="wrap">
