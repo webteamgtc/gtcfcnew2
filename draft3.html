@@ -1,6 +1,14 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GTC Financial Consultancy LLC</title>
+<html lang="en" data-theme="light" data-mode="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coming Soon | GTC Financial Consultancy LLC</title>
+<meta name="description" content="GTC Financial Consultancy LLC is preparing a new website. Based in Dubai — check back soon for updates.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Coming Soon | GTC Financial Consultancy LLC">
+<meta property="og:description" content="GTC Financial Consultancy LLC is preparing a new website. Based in Dubai — check back soon.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coming Soon | GTC Financial Consultancy LLC">
+<meta name="twitter:description" content="GTC Financial Consultancy LLC is preparing a new website. Based in Dubai — check back soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap">
@@ -93,16 +101,11 @@ p { margin: 0; }
 .dots { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(var(--line-2) 1px, transparent 1.2px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%); mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%); }
 .page > * { position: relative; z-index: 1; }
 
-/* logo lockup */
-.lockup { display: inline-flex; align-items: center; gap: 14px; padding: 10px 20px 10px 12px; border-radius: 18px; background: color-mix(in srgb, var(--surface) 70%, transparent); border: 1px solid var(--line); backdrop-filter: blur(12px); animation: fade .9s .1s var(--ease) both; }
-.lockup svg { width: 52px; height: 52px; flex: none; }
-.lockup svg path { transform-origin: 20px 20px; animation: facet .7s var(--ease) both; }
-.lockup svg path:nth-child(1) { animation-delay: .25s; } .lockup svg path:nth-child(2) { animation-delay: .35s; } .lockup svg path:nth-child(3) { animation-delay: .45s; }
-.lockup svg path:nth-child(4) { animation-delay: .55s; } .lockup svg path:nth-child(5) { animation-delay: .65s; } .lockup svg path:nth-child(6) { animation-delay: .75s; }
-@keyframes facet { from { transform: scale(.2) rotate(-30deg); opacity: 0; } }
-.lockup .nm { font-family: var(--head); font-weight: 600; font-size: clamp(17px, 2.1vw, 24px); letter-spacing: -0.01em; text-align: left; line-height: 1.2; }
+/* logo lockup (text only) */
+.lockup { display: inline-flex; align-items: center; justify-content: center; padding: 12px 22px; border-radius: 18px; background: color-mix(in srgb, var(--surface) 70%, transparent); border: 1px solid var(--line); backdrop-filter: blur(12px); animation: fade .9s .1s var(--ease) both; }
+.lockup .nm { font-family: var(--head); font-weight: 600; font-size: clamp(17px, 2.1vw, 24px); letter-spacing: -0.01em; text-align: center; line-height: 1.25; }
 .lockup .nm span { color: var(--bronze-ink); }
-@media (max-width: 520px) { .lockup .nm { max-width: 11em; } }
+@media (max-width: 520px) { .lockup .nm { max-width: 14em; } }
 
 /* gem */
 .gem { position: relative; width: min(520px, 100%); height: clamp(220px, 38vh, 400px); }
@@ -139,11 +142,6 @@ p { margin: 0; }
 <div class="spot" id="spot" aria-hidden="true"></div>
 <main class="page">
   <div class="lockup" aria-label="GTC Financial Consultancy LLC">
-    <svg viewBox="0 0 40 40" aria-hidden="true">
-      <path d="M20 3 34.7 11.5 20 20Z" fill="var(--blue)"/><path d="M34.7 11.5V28.5L20 20Z" fill="var(--bronze)"/>
-      <path d="M34.7 28.5 20 37V20Z" fill="var(--blue)" opacity=".75"/><path d="M20 37 5.3 28.5 20 20Z" fill="var(--bronze)" opacity=".8"/>
-      <path d="M5.3 28.5V11.5L20 20Z" fill="var(--blue)" opacity=".9"/><path d="M5.3 11.5 20 3V20Z" fill="var(--bronze)" opacity=".6"/>
-    </svg>
     <div class="nm">GTC Financial <span>Consultancy LLC</span></div>
   </div>
   <div class="gem" aria-hidden="true"><div class="scene" id="scene"></div></div>
@@ -160,25 +158,16 @@ p { margin: 0; }
 (() => {
 /* ===== shared helpers for the single-screen Coming Soon pages ===== */
 const NAME = "GTC Financial Consultancy LLC";
-// Colour mode follows the visitor's device. For previews, #light, #gray or #dark in the link forces a mode.
+// This page always uses light mode (ignores system dark preference).
 const Theme = (() => {
   const listeners = [];
-  const media = matchMedia("(prefers-color-scheme: dark)");
-  const forced = () => { const h = location.hash.replace("#", ""); return ["light", "gray", "dark"].includes(h) ? h : null; };
-  const get = () => {
-    const f = forced(); if (f) return f;
-    const host = document.documentElement.getAttribute("data-theme");
-    if (host === "dark" || host === "light") return host;
-    return media.matches ? "dark" : "light";
-  };
+  const get = () => "light";
   const apply = () => {
-    const f = forced();
-    if (f) document.documentElement.setAttribute("data-mode", f); else document.documentElement.removeAttribute("data-mode");
-    listeners.forEach((fn) => fn(get()));
+    document.documentElement.setAttribute("data-mode", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+    document.documentElement.style.colorScheme = "light";
+    listeners.forEach((fn) => fn("light"));
   };
-  media.addEventListener?.("change", apply);
-  addEventListener("hashchange", apply);
-  new MutationObserver(() => listeners.forEach((fn) => fn(get()))).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   apply();
   return { get, on: (fn) => listeners.push(fn), css: (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim() };
 })();
