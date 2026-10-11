@@ -2,5 +2,10 @@
   "framework": null,
   "buildCommand": "",
   "installCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/draft1.html", "destination": "/", "permanent": true },
+    { "source": "/draft2.html", "destination": "/", "permanent": true },
+    { "source": "/draft3.html", "destination": "/", "permanent": true }
+  ]
 }
